@@ -1,0 +1,6 @@
+﻿@model CanonicalHelperModel
+
+@if (Model.CurrentNode != null && !string.IsNullOrEmpty(Model.CurrentNode.CanonicalUrl)) 
+{
+    <link rel="canonical" href="@Model.CurrentNode.CanonicalUrl" />
+}

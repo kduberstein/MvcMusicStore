@@ -1,0 +1,37 @@
+﻿@model IndexAccountViewModel
+@{
+    ViewBag.Title = "Account";
+}
+
+@Html.MvcSiteMap().SiteMapPath()
+
+<h2 class="main-heading text-center">Your Orders</h2>
+
+<div class="table-responsive compare-table">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Date</td>
+                <td>Order Number</td>
+                <td>Total</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Customer.Orders)
+            {
+                <tr>
+                    <td>
+                        @order.Created.ToShortDateString()
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => order.OrderNumber, new { @class = "control-label" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => order.Total, new { @class = "control-label" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

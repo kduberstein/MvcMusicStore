@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BB7055F5-4A33-40D1-99DE-821E022DBD68}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MusicStore.Model</RootNamespace>
+    <AssemblyName>MusicStore.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Customers\Address.cs" />
+    <Compile Include="Customers\AddressBusinessRules.cs" />
+    <Compile Include="Customers\Customer.cs" />
+    <Compile Include="Customers\CustomerBusinessRules.cs" />
+    <Compile Include="Customers\DeliveryAddress.cs" />
+    <Compile Include="Customers\DeliveryAddressBusinessRules.cs" />
+    <Compile Include="Customers\EmailValidationSpecification.cs" />
+    <Compile Include="Customers\ICustomerRepository.cs" />
+    <Compile Include="Customers\InvalidAddressException.cs" />
+    <Compile Include="Customers\IStateRepository.cs" />
+    <Compile Include="Customers\State.cs" />
+    <Compile Include="Ecommerce\Cart.cs" />
+    <Compile Include="Ecommerce\CartBusinessRules.cs" />
+    <Compile Include="Ecommerce\CartItem.cs" />
+    <Compile Include="Ecommerce\CartItemBusinessRules.cs" />
+    <Compile Include="Ecommerce\CartItemFactory.cs" />
+    <Compile Include="Ecommerce\ICartRepository.cs" />
+    <Compile Include="Ecommerce\IUserLoginRepository.cs" />
+    <Compile Include="Ecommerce\Role.cs" />
+    <Compile Include="Ecommerce\RoleBusinessRules.cs" />
+    <Compile Include="Ecommerce\UserLogin.cs" />
+    <Compile Include="Ecommerce\UserLoginBusinessRules.cs" />
+    <Compile Include="Orders\IOrderRepository.cs" />
+    <Compile Include="Orders\Order.cs" />
+    <Compile Include="Orders\OrderBusinessRules.cs" />
+    <Compile Include="Orders\OrderItem.cs" />
+    <Compile Include="Orders\OrderItemBusinessRules.cs" />
+    <Compile Include="Orders\OrderItemFactory.cs" />
+    <Compile Include="Products\Album.cs" />
+    <Compile Include="Products\AlbumBusinessRules.cs" />
+    <Compile Include="Products\Artist.cs" />
+    <Compile Include="Products\ArtistBusinessRules.cs" />
+    <Compile Include="Products\Genre.cs" />
+    <Compile Include="Products\GenreBusinessRules.cs" />
+    <Compile Include="Products\IAlbumRepository.cs" />
+    <Compile Include="Products\IArtistRepository.cs" />
+    <Compile Include="Products\IGenreRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\INextSequenceRepository.cs" />
+    <Compile Include="Shared\NextSequenceNumber.cs" />
+    <Compile Include="Shared\SequenceControl.cs" />
+    <Compile Include="Shared\SequenceControlBusinessRules.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MusicStore.Infrastructure\MusicStore.Infrastructure.csproj">
+      <Project>{53D49374-89B1-400F-8245-33D3C69A715C}</Project>
+      <Name>MusicStore.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

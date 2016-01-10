@@ -1,0 +1,20 @@
+﻿@model CompleteCheckoutViewModel
+@{
+    ViewBag.Title = "Complete";
+}
+
+<h2 class="main-heading text-center">Order Complete</h2>
+
+<div class="content-box text-center">
+    <h5>
+        Your order is complete! Your order number is: <strong>@Model.OrderNumber</strong>.
+    </h5>
+    <p>
+        You will receive an email confirmation shortly.
+    </p>
+    <br />
+    <p>
+        @Html.ActionLink("Continue Shopping", "Index", "Store", new { area = "Store" }, new { @class = "btn btn-black text-uppercase" })
+        @Html.ActionLink("Home", "Index", "Home", new { area = string.Empty }, new { @class = "btn btn-black text-uppercase" })
+    </p>
+</div>

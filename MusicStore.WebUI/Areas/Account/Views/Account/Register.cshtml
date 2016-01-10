@@ -1,0 +1,102 @@
+﻿@model RegisterAccountViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2 class="main-heading text-center">
+    Register<br/>
+    <span>Create New Account</span>
+</h2>
+
+<div class="field-validation-error">
+    @Html.Encode((Model.ErrorMessage))
+</div>
+
+<section class="registration-area">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("Register", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                
+                @Html.HiddenFor(modelItem => modelItem.ReturnUrl)
+
+                <div class="panel panel-smart">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Personal Information</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    @Html.LabelFor(modelItem => modelItem.FirstName, "First Name:", new { @class = "col-sm-3 control-label" })
+                                    <div class="col-sm-9">
+                                        @Html.TextBoxFor(modelItem => modelItem.FirstName, new { @class = "form-control", placeholder = "First Name" })
+                                        @Html.ValidationMessageFor(m => m.FirstName, string.Empty, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(modelItem => modelItem.LastName, "Last Name:", new { @class = "col-sm-3 control-label" })
+                                    <div class="col-sm-9">
+                                        @Html.TextBoxFor(modelItem => modelItem.LastName, new { @class = "form-control", placeholder = "Last Name" })
+                                        @Html.ValidationMessageFor(m => m.LastName, string.Empty, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(modelItem => modelItem.EmailAddress, "Email Address:", new { @class = "col-sm-3 control-label" })
+                                    <div class="col-sm-9">
+                                        @Html.TextBoxFor(modelItem => modelItem.EmailAddress, new { @class = "form-control", placeholder = "Email Address" })
+                                        @Html.ValidationMessageFor(m => m.EmailAddress, string.Empty, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <h3 class="panel-heading inner">
+                                    Password
+                                </h3>
+                                <div class="form-group">
+                                    @Html.LabelFor(modelItem => modelItem.Password, "Password:", new { @class = "col-sm-3 control-label" })
+                                    <div class="col-sm-9">
+                                        @Html.PasswordFor(modelItem => modelItem.Password, new { @class = "form-control", placeholder = "Password" })
+                                        @Html.ValidationMessageFor(m => m.Password, string.Empty, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(modelItem => modelItem.ConfirmPassword, "Confirm Password:", new { @class = "col-sm-3 control-label" })
+                                    <div class="col-sm-9">
+                                        @Html.PasswordFor(modelItem => modelItem.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
+                                        @Html.ValidationMessageFor(m => m.ConfirmPassword, string.Empty, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Terms & Conditions</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                                    leap into electronic typesetting, remaining essentially unchanged.
+                                </p>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        @Html.CheckBoxFor(modelItem => modelItem.TermsAndConditions, new { @class = "pull-left" })
+                                        @Html.LabelFor(modelItem => modelItem.TermsAndConditions, "I have read the terms and conditions", new { @class = "control-label-inline" })
+                                        <br/>
+                                        @Html.ValidationMessageFor(m => m.TermsAndConditions, string.Empty, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-9">
+                                        <button type="submit" class="btn btn-black">Register</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

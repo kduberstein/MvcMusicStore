@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MusicStore.Model" namespace="MusicStore.Model.Ecommerce">
+
+  <class name="UserLogin" table="`USER_LOGIN`">
+
+    <id name="Id" access="property" column="`USER_LOGIN_ID`">
+      <generator class="guid.comb" />
+    </id>
+
+    <version name="Version" column="`VERSION`" />
+
+    <property name="Username" type="String" column="`USERNAME`" length="128" not-null="true" unique="true" />
+    <property name="Password" type="String" column="`PASSWORD`" length="128" not-null="true" />
+
+    <set name="Roles" inverse="true" lazy="true" cascade="all-delete-orphan" access="field.camelcase-underscore">
+      <key column="`USER_LOGIN_ID`" />
+      <one-to-many class="Role" />
+    </set>
+
+  </class>
+
+</hibernate-mapping>

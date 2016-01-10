@@ -1,0 +1,61 @@
+﻿@model LoginAccountViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2 class="main-heading text-center">
+    Login or create new account
+</h2>
+
+<section class="login-area">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-smart">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Login</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="field-validation-error">
+                        @Html.Encode(Model.ErrorMessage)
+                    </div>
+                    <p>
+                        Please login using your existing account
+                    </p>
+                    @using (Html.BeginForm("Login", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-inline", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            @Html.LabelFor(modelItem => modelItem.EmailAddress, new { @class = "sr-only" })
+                            @Html.TextBoxFor(modelItem => modelItem.EmailAddress, new { @class = "form-control", placeholder = "Email Address" })
+                        </div>
+                        <span>&nbsp;</span>
+                        <div class="form-group">
+                            @Html.LabelFor(modelItem => modelItem.Password, new { @class = "sr-only" })
+                            @Html.PasswordFor(modelItem => modelItem.Password, new { @class = "form-control", placeholder = "Password" })
+                        </div>
+                        <span>&nbsp;</span>
+                        <button type="submit" class="btn btn-black">
+                            Login
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-smart">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Create new account</h3>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Registration allows you to avoid filling in forms every time you checkout.
+                    </p>
+                    <a href="@Url.Action("Register", "Account", new { area = "Account" })" class="btn btn-black">
+                        Register
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

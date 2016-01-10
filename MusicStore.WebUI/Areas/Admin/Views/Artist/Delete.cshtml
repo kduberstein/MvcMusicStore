@@ -1,0 +1,34 @@
+﻿@model DeleteArtistViewModel
+@{
+    ViewBag.Title = "Delete";
+}
+
+@Html.MvcSiteMap().SiteMapPath()
+
+<section class="admin-area">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("Delete", "Artist", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="panel panel-smart">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Delete Confirmation</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            Are you sure you want to delete the artist named <strong>@Model.Artist.Name</strong>?
+                        </p>
+                        <p>
+                            <button type="submit" class="btn btn-black">Delete</button>
+                        </p>
+                        <p>
+                            @Html.ActionLink("Back to List", "Index")
+                        </p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

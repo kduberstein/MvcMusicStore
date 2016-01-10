@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MusicStore.Model" namespace="MusicStore.Model.Orders">
+
+  <class name="Order" table="`ORDER`">
+
+    <id name="Id" access="property" column="`ORDER_ID`">
+      <generator class="guid.comb" />
+    </id>
+
+    <version name="Version" column="`VERSION`" />
+
+    <many-to-one name="Customer" column="`CUSTOMER_ID`" not-null="true" />
+
+    <property name="Created" type="DateTime" column="`ORDER_DATE`" not-null="true" access="field.camelcase-underscore" />
+    <property name="OrderNumber" type="String" column="`ORDER_NUMBER`" length="30" not-null="true" />
+
+    <component name="DeliveryAddress" class="MusicStore.Model.Customers.Address">
+      <property name="AddressLine1" column="`DELIVERY_ADDRESS_LINE_1`" />
+      <property name="AddressLine2" column="`DELIVERY_ADDRESS_LINE_2`" />
+      <property name="City" column="`DELIVERY_CITY`" />
+      <property name="State" column="`DELIVERY_STATE`" />
+      <property name="ZipCode" column="`DELIVERY_ZIP_CODE`" />
+    </component>
+
+    <set name="Items" inverse="true" lazy="true" cascade="all-delete-orphan" access="field.camelcase-underscore">
+      <key column="`ORDER_ID`" />
+      <one-to-many class="OrderItem" />
+    </set>
+
+  </class>
+
+</hibernate-mapping>

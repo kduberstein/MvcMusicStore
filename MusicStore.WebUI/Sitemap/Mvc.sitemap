@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+  <mvcSiteMapNode title="Home" controller="Home" action="Index">
+    <mvcSiteMapNode title="About" controller="Home" action="About" />
+    <mvcSiteMapNode title="Store" controller="Store" action="Index" area="Store">
+      <mvcSiteMapNode title="Browse" action="Browse" dynamicNodeProvider="MusicStore.Services.ViewModels.NodeProviders.GenreDynamicNodeProvider, MusicStore.Services">
+        <mvcSiteMapNode title="Detail" action="Detail" dynamicNodeProvider="MusicStore.Services.ViewModels.NodeProviders.AlbumDynamicNodeProvider, MusicStore.Services" />
+      </mvcSiteMapNode>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="Admin" controller="Admin" action="Index" area="Admin">
+      <mvcSiteMapNode title="Genres" controller="Genre" action="Index" area="Admin">
+        <mvcSiteMapNode title="Details" controller="Genre" action="Detail" area="Admin" preservedRouteParameters="id" />
+        <mvcSiteMapNode title="Create" controller="Genre" action="Create" area="Admin" />
+        <mvcSiteMapNode title="Edit" controller="Genre" action="Edit" area="Admin" preservedRouteParameters="id" />
+        <mvcSiteMapNode title="Delete" controller="Genre" action="Delete" area="Admin" preservedRouteParameters="id" />
+      </mvcSiteMapNode>
+      <mvcSiteMapNode title="Artists" controller="Artist" action="Index" area="Admin">
+        <mvcSiteMapNode title="Details" controller="Artist" action="Detail" area="Admin" preservedRouteParameters="id" />
+        <mvcSiteMapNode title="Create" controller="Artist" action="Create" area="Admin" />
+        <mvcSiteMapNode title="Edit" controller="Artist" action="Edit" area="Admin" preservedRouteParameters="id" />
+        <mvcSiteMapNode title="Delete" controller="Artist" action="Delete" area="Admin" preservedRouteParameters="id" />
+      </mvcSiteMapNode>
+      <mvcSiteMapNode title="Albums" controller="Album" action="Index">
+        <mvcSiteMapNode title="Details" controller="Album" action="Detail" area="Admin" preservedRouteParameters="id" />
+        <mvcSiteMapNode title="Create" controller="Album" action="Create" area="Admin" />
+        <mvcSiteMapNode title="Edit" controller="Album" action="Edit" area="Admin" preservedRouteParameters="id" />
+        <mvcSiteMapNode title="Delete" controller="Album" action="Delete" area="Admin" preservedRouteParameters="id" />
+      </mvcSiteMapNode>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="Shopping Cart" controller="Cart" action="Index" area="Cart">
+      <mvcSiteMapNode title="Address &amp; Payment" controller="Checkout" action="AddressAndPayment" area="Checkout" />
+      <mvcSiteMapNode title="Complete" controller="Checkout" action="Complete" area="Checkout" />
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="Account" controller="Account" action="Index" area="Account">
+      <mvcSiteMapNode title="Register" controller="Account" action="Register" area="Account" />
+    </mvcSiteMapNode>
+  </mvcSiteMapNode>
+</mvcSiteMap>

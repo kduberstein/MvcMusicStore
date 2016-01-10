@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Unauthorized";
+}
+
+@section breadcrumb
+{
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li class="active">401 Page</li>
+    </ol>
+}
+
+<h2 class="main-heading text-center">401 Page</h2>
+
+<div class="content-box text-center">
+    <h4 class="special-heading">oops !</h4>
+    <h5>
+        You are not authorized to view the requested page.
+    </h5>
+    <br />
+    <p>
+        <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-black text-uppercase">Go Back</a>
+    </p>
+</div>

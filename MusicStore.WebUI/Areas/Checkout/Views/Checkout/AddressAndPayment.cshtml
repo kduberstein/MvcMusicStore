@@ -1,0 +1,104 @@
+﻿@model AddressAndPaymentCheckoutViewModel
+@{
+    ViewBag.Title = "Address And Payment";
+}
+
+<h2 class="main-heading text-center">Address & Payment</h2>
+
+<section class="registration-area">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("AddressAndPayment", "Checkout", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                
+                @Html.HiddenFor(modelItem => modelItem.CustomerId)
+
+                <div class="panel panel-smart">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Shipping Information</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    @Html.LabelFor(modelItem => modelItem.FirstName, "First Name:", new { @class = "col-sm-3 control-label" })
+                                    <div class="col-sm-9">
+                                        @Html.TextBoxFor(modelItem => modelItem.FirstName, new { @class = "form-control", placeholder = "First Name" })
+                                        @Html.ValidationMessageFor(m => m.FirstName, string.Empty, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(modelItem => modelItem.LastName, "Last Name:", new { @class = "col-sm-3 control-label" })
+                                    <div class="col-sm-9">
+                                        @Html.TextBoxFor(modelItem => modelItem.LastName, new { @class = "form-control", placeholder = "Last Name" })
+                                        @Html.ValidationMessageFor(m => m.LastName, string.Empty, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(modelItem => modelItem.AddressLine1, "Address/1:", new { @class = "col-sm-3 control-label" })
+                                    <div class="col-sm-9">
+                                        @Html.TextBoxFor(modelItem => modelItem.AddressLine1, new { @class = "form-control", placeholder = "Address/1" })
+                                        @Html.ValidationMessageFor(m => m.AddressLine1, string.Empty, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(modelItem => modelItem.AddressLine2, "Address/2:", new { @class = "col-sm-3 control-label" })
+                                    <div class="col-sm-9">
+                                        @Html.TextBoxFor(modelItem => modelItem.AddressLine2, new { @class = "form-control", placeholder = "Address/2" })
+                                        @Html.ValidationMessageFor(m => m.AddressLine1, string.Empty, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(modelItem => modelItem.City, "City:", new { @class = "col-sm-3 control-label" })
+                                    <div class="col-sm-9">
+                                        @Html.TextBoxFor(modelItem => modelItem.City, new { @class = "form-control", placeholder = "City" })
+                                        @Html.ValidationMessageFor(m => m.City, string.Empty, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(modelItem => modelItem.State, "State:", new { @class = "col-sm-3 control-label" })
+                                    <div class="col-sm-9">
+                                        @Html.DropDownListFor(modelItem => modelItem.State,
+                                            new SelectList(Model.StatesLookupList, "Abbr", "FullName"), "-- Select --", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.State, string.Empty, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(modelItem => modelItem.ZipCode, "Zip Code:", new { @class = "col-sm-3 control-label" })
+                                    <div class="col-sm-9">
+                                        @Html.TextBoxFor(modelItem => modelItem.ZipCode, new { id = "zipcode", @class = "form-control zipcode", placeholder = "Zip Code" })
+                                        @Html.ValidationMessageFor(m => m.ZipCode, string.Empty, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Promotions</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>
+                                    We're running a promotion: all music is free with the promo code: "FREE"
+                                </p>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(modelItem => modelItem.PromoCode, "Promo Code:", new { @class = "col-sm-3 control-label" })
+                                    <div class="col-sm-9">
+                                        @Html.TextBoxFor(modelItem => modelItem.PromoCode, new { @class = "form-control", placeholder = "Promo Code" })
+                                        @Html.ValidationMessageFor(m => m.PromoCode, string.Empty, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-9 pull-right">
+                                        <button type="submit" class="btn btn-black">Place Order</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

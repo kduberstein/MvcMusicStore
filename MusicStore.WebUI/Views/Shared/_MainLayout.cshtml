@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>@Html.MvcSiteMap().SiteMapTitle() | MVC Music Store</title>
+        @Html.MvcSiteMap().CanonicalTag()
+        @Html.MvcSiteMap().MetaRobotsTag()
+        @Scripts.Render("~/bundles/jquery")
+        @Styles.Render("~/Content/css")
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header-area">
+            <div class="header-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-xs-12">
+                            <div class="header-links">
+                                <ul class="nav navbar-nav pull-left">
+                                    <li>
+                                        <a href="/">
+                                            <i class="fa fa-home hidden-lg hidden-md" title="Home"></i>
+                                            <span class="hidden-sm hidden-xs">Home</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("About", "Home", new { area = string.Empty }, string.Empty)">
+                                            <i class="fa fa-home hidden-lg hidden-md" title="About"></i>
+                                            <span class="hidden-sm hidden-xs">About</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+            </div>
+            <div class="main-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div id="search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control input-lg" placeholder="Search">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-lg" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="logo">
+                                <a href="/">
+                                    <img src="~/Content/Images/Site/logo.png" title="MVC Music Store" alt="MVC Music Store" class="img-responsive"/>
+                                </a>
+                            </div>
+                        </div>
+                        <div id="cart_render">
+                            @{ Html.RenderAction("CartSummary", "Cart", new { area = "Cart" }); }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav id="main-menu" class="navbar" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-cat-collapse">
+                            <span class="sr-only">Toggle Navigation</span>
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-cat-collapse">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+                            <li>
+                                @Html.ActionLink("About", "About", "Home", new { area = string.Empty }, string.Empty)
+                            </li>
+                            <li>
+                                @Html.ActionLink("Store", "Index", "Store", new { area = "Store" }, string.Empty)
+                            </li>
+                            <li>
+                                @Html.ActionLink("Admin", "Index", "Admin", new { area = "Admin" }, string.Empty)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div id="main-container-home" class="container child-page">
+            <div class="row">
+                @RenderSection("sidebar", false)
+                @RenderBody()
+            </div>
+        </div>
+
+        <footer id="footer">
+            <div class="footer-links">
+                <div class="container">
+                    <div class="col-md-2 col-sm-6">
+                        <h5>Information</h5>
+                        <ul>
+                            <li>
+                                <a href="#">About Us</a>
+                            </li>
+                            <li>
+                                <a href="#">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="#">Terms &amp; Conditions</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <h5>My Account</h5>
+                        <ul>
+                            <li>
+                                <a href="#">My orders</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <h5>Service</h5>
+                        <ul>
+                            <li>
+                                <a href="#">Contact Us</a>
+                            </li>
+                            <li>
+                                <a href="#">Returns</a>
+                            </li>
+                            <li>
+                                <a href="#">Site Map</a>
+                            </li>
+                            <li>
+                                <a href="#">Specials</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <h5>Follow Us</h5>
+                        <ul>
+                            <li>
+                                <a href="#">Facebook</a>
+                            </li>
+                            <li>
+                                <a href="#">Twitter</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 col-sm-12 last">
+                        <h5>Contact Us</h5>
+                        <address>
+                            <ul>
+                                <li class="footer-lead">
+                                    <strong>MVC Music Store</strong>
+                                </li>
+                                <li>123 Main St.</li>
+                                <li>Anytown, CA 90210</li>
+                                <li>
+                                    <abbr title="Email">E:</abbr> <a href="mailto:#">info@mvcmusicstore.com</a>
+                                </li>
+                                <li>
+                                    <abbr title="Phone">P:</abbr> <span class="phone-last">1+ (234) 567-8910</span>
+                                </li>
+                            </ul>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="container">
+                    <p class="pull-left">
+                        &copy; 2015 MVC Music Store
+                    </p>
+                    <ul class="pull-right list-inline">
+                        <li>
+                            <img src="~/Content/Images/Site/paypal.png" alt="PaymentGateway"/>
+                        </li>
+                        <li>
+                            <img src="~/Content/Images/Site/visa.png" alt="PaymentGateway"/>
+                        </li>
+                        <li>
+                            <img src="~/Content/Images/Site/mastercard.png" alt="PaymentGateway"/>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

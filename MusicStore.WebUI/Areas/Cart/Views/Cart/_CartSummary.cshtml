@@ -1,0 +1,89 @@
+﻿@using MusicStore.Infrastructure.Helpers
+@model CartSummaryViewModel
+
+<div class="col-md-3">
+    <div id="cart" class="btn-group btn-block">
+        <button type="button" data-toggle="dropdown" class="btn btn-block btn-lg dropdown-toggle">
+            <i class="fa fa-shopping-cart"></i>
+            <span class="hidden-md">Cart:</span>
+            <span id="cart-widget-summary">@Model.NumberOfItems item(s) - @Model.CartTotal.FormatMoney()</span>
+            <i class="fa fa-caret-down"></i>
+        </button>
+
+        @if (Model.NumberOfItems > 0)
+        {
+            <ul class="dropdown-menu pull-right">
+                <li>
+                    <table class="table hcart">
+                        @foreach (var item in Model.Items)
+                        {
+                            <tr id="widget-row-@item.Id">
+                                <td class="text-center">
+                                    <a href="@Url.Action("Detail", "Store", new { area = "Store", id = @item.Album.Id })">
+                                        <img src="@item.Album.AlbumArtUrl" height="40" width="40" alt="image" title="image" class="img-thumbnail img-responsive"/>
+                                    </a>
+                                </td>
+                                <td class="text-left">
+                                    @Html.ActionLink(@item.Album.Title.Truncate(15), "Detail", "Store", new { area = "Store", id = @item.Album.Id }, string.Empty)
+                                </td>
+                                <td id="cart-widget-qty" class="text-right">x @item.Qty</td>
+                                <td  class="text-right">@item.Album.Price</td>
+                                <td class="text-center">
+                                    <a href="#" title="Remove" class="RemoveLink tool-tip" data-cartitemid="@item.Id" data-albumid="@item.Album.Id">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </li>
+                <li>
+                    <table class="table table-bordered total">
+                        <tbody>
+                        <tr>
+                            <td style="width: 75px;"></td>
+                            <td class="text-right">
+                                <strong>Sub-total</strong>
+                            </td>
+                            <td id="cart-widget-subtotal" class="pull-right">@Model.CartTotal.FormatMoney()</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="text-right">
+                                <strong>Shipping</strong>
+                            </td>
+                            <td class="pull-right">$0.00</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="text-right">
+                                <strong>Sales tax</strong>
+                            </td>
+                            <td class="pull-right">$0.00</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="text-right">
+                                <strong>Total</strong>
+                            </td>
+                            <td id="cart-widget-total" class="pull-right">@Model.CartTotal.FormatMoney()</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p class="text-right btn-block1">
+                        @Html.ActionLink("View Cart", "Index", "Cart", new { area = "Cart" }, string.Empty)
+                        @Html.ActionLink("Checkout", "AddressAndPayment", "Checkout", new { area = "Checkout" }, string.Empty)
+                    </p>
+                </li>
+            </ul>
+        }
+        else
+        {
+            <ul class="dropdown-menu pull-right">
+                <li>
+                    <p class="text-center">Your shopping cart is empty!</p>
+                </li>
+            </ul>
+        }
+    </div>
+</div>

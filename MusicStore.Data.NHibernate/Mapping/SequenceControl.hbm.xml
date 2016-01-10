@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MusicStore.Model" namespace="MusicStore.Model.Shared">
+
+  <class name="SequenceControl" table="`SEQUENCE_CONTROL`">
+
+    <id name="Id" access="property" column="`SEQUENCE_CONTROL_ID`" length="25">
+      <generator class="assigned" />
+    </id>
+
+    <version name="Version" column="`VERSION`" />
+
+    <property name="LastSequence" type="Int32">
+      <column name="`LAST_SEQUENCE`" check="LAST_SEQUENCE &lt; 2000000000 AND LAST_SEQUENCE &gt; -1" not-null="true" />
+    </property>
+    <property name="SequenceFormat" type="String">
+      <column name="`SEQUENCE_FORMAT`" check="CHARINDEX( '[#]', SEQUENCE_FORMAT) &gt; 0" default="'[#]'" not-null="true" />
+    </property>
+    <property name="ZeroPadToDigits" type="Int32">
+      <column name="`ZERO_PAD_TO_DIGITS`" check="ZERO_PAD_TO_DIGITS &gt; -1 AND ZERO_PAD_TO_DIGITS &lt; 11" default="0" not-null="true" />
+    </property>
+    <property name="IncrementBy" type="Int32">
+      <column name="`INCREMENT_BY`" check="INCREMENT_BY &gt; 0" default="1" not-null="true" />
+    </property>
+
+  </class>
+
+  <database-object>
+    <create>
+      SET ANSI_NULLS OFF
+      GO
+      SET QUOTED_IDENTIFIER OFF
+      GO
+      CREATE PROCEDURE [dbo].[SP_GET_NEXT_IN_SEQUENCE]
+
+      @SequenceKey VARCHAR(20) -- e.g. 'order, return'
+
+      AS
+      BEGIN
+
+      SET NOCOUNT ON
+
+      DECLARE @LASTNUMBER INT
+      DECLARE @NEXTNUMBER INT
+      DECLARE @FORMATTEDNUMBER VARCHAR(40)
+      DECLARE @MYKEY VARCHAR(30)
+
+      -- If the sequence does not exist, return a '' and zero.
+      IF NOT EXISTS(SELECT 'X'
+      FROM SEQUENCE_CONTROL
+      WHERE SEQUENCE_CONTROL.SEQUENCE_CONTROL_ID = @SequenceKey )
+      BEGIN
+      SELECT @SequenceKey AS SequenceKey,
+      CAST('' AS VARCHAR(30)) AS NextSequenceFormatted,
+      CAST(0 AS INT) AS NextSequenceInt
+      RETURN
+      END
+
+      DECLARE @SEQFORMAT VARCHAR(30), @IncrementBy INT,
+      @IncrementStep INT, @zeropadtodigits INT
+
+      SELECT @SEQFORMAT = RTRIM(LTRIM(SEQUENCE_FORMAT)),
+      @IncrementBy = INCREMENT_BY,
+      @zeropadtodigits = ZERO_PAD_TO_DIGITS
+      FROM    SEQUENCE_CONTROL
+      WHERE    SEQUENCE_CONTROL.SEQUENCE_CONTROL_ID = @SequenceKey
+
+      DECLARE @THEROWCOUNT INT
+      SET @THEROWCOUNT = 0
+
+      BEGIN TRANSACTION T1
+      WHILE ( @THEROWCOUNT = 0 )
+      BEGIN
+      SELECT   @LASTNUMBER= LAST_SEQUENCE
+      FROM     SEQUENCE_CONTROL
+      WHERE    SEQUENCE_CONTROL.SEQUENCE_CONTROL_ID = @SequenceKey
+
+      UPDATE     SEQUENCE_CONTROL
+      SET        LAST_SEQUENCE = @LASTNUMBER + @IncrementBy
+      WHERE      SEQUENCE_CONTROL_ID = @SequenceKey AND
+      LAST_SEQUENCE = @LASTNUMBER -- This guarantees that no one has updated it in the meantime.
+
+      SELECT @THEROWCOUNT = @@ROWCOUNT
+      -- If its zero, then get the next number after that and try again.
+      END
+      COMMIT TRANSACTION T1
+
+      -- Format the number according to the pattern for this sequence.
+      DECLARE @FMTNUM VARCHAR(20)
+      SET @NEXTNUMBER = @LASTNUMBER + @IncrementBy
+      IF ( @zeropadtodigits>0)
+      SET @FMTNUM = RIGHT( REPLICATE('0', @zeropadtodigits) +
+      CAST(@NEXTNUMBER AS VARCHAR(20)), @zeropadtodigits)
+      ELSE
+      SET @FMTNUM = CAST(@NEXTNUMBER AS VARCHAR(10))
+
+      SET @FORMATTEDNUMBER = REPLACE(@SEQFORMAT,'[#]', @FMTNUM )
+
+      SELECT CAST(@FORMATTEDNUMBER AS NVARCHAR(30)) AS NextSequenceFormatted
+
+      END
+    </create>
+    <drop>
+      IF EXISTS ( SELECT *  FROM   sysobjects  WHERE  id = object_id(N'[dbo].[SP_GET_NEXT_IN_SEQUENCE]')  and OBJECTPROPERTY(id, N'IsProcedure') = 1 )
+      BEGIN
+      DROP PROCEDURE [dbo].[SP_GET_NEXT_IN_SEQUENCE]
+      END
+    </drop>
+  </database-object>
+
+</hibernate-mapping>

@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@section sidebar {
+    @{ Html.RenderAction("GenreMenu", "Store"); }
+}
+
+<div class="col-md-9">
+    @RenderBody()
+</div>

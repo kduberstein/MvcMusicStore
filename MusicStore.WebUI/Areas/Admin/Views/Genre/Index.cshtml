@@ -1,0 +1,41 @@
+﻿@using MusicStore.Infrastructure.Helpers
+@model IndexGenreViewModel
+@{
+    ViewBag.Title = "Genres";
+}
+
+@Html.MvcSiteMap().SiteMapPath()
+
+<p class="table-top-link">
+    @Html.ActionLink("Create New", "Create", "Genre")
+</p>
+
+<div class="table-responsive compare-table">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <td>Name</td>
+            <td>Description</td>
+            <td>Actions</td>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var genre in Model.Genres)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => genre.Name)
+                </td>
+                <td class="td-align-left">
+                    @genre.Description.Truncate(65)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = genre.Id }) |
+                    @Html.ActionLink("Details", "Detail", new { id = genre.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = genre.Id })
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

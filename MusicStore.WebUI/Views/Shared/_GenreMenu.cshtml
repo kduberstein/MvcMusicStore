@@ -1,0 +1,14 @@
+﻿@model GenreMenuViewModel
+
+<div class="col-md-3">
+    <h3 class="side-heading">Genres</h3>
+    <div class="list-group categories">
+        @foreach (var genre in Model.Genres)
+        {
+            <a href="@Url.Action("Browse", "Store", new { genre = genre.Name })" class="list-group-item">
+                <i class="fa fa-chevron-right"></i>
+                @genre.Name
+            </a>
+        }
+    </div>
+</div>

@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{C98F3DDC-A301-4719-B534-61555242AA54}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{FEEC733C-231A-4B88-827B-9FAF7AF595F5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{FE482637-7C15-477B-A329-EA58D9C341C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{28043C05-5E95-44FE-9B26-D3CA67CD00C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicStore.Controllers", "MusicStore.Controllers\MusicStore.Controllers.csproj", "{0AC292C0-93EC-4B3F-B822-F859D6710D3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicStore.WebUI", "MusicStore.WebUI\MusicStore.WebUI.csproj", "{B89EC6CB-1671-4483-88D9-846AC7922E86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicStore.Data.NHibernate", "MusicStore.Data.NHibernate\MusicStore.Data.NHibernate.csproj", "{B23598D0-2CE9-4883-8B17-B07B0503BF6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicStore.Model", "MusicStore.Model\MusicStore.Model.csproj", "{BB7055F5-4A33-40D1-99DE-821E022DBD68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicStore.Services", "MusicStore.Services\MusicStore.Services.csproj", "{BE37EDE0-7715-421D-8708-8119439CAAA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicStore.Infrastructure", "MusicStore.Infrastructure\MusicStore.Infrastructure.csproj", "{53D49374-89B1-400F-8245-33D3C69A715C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicStore.TestUtils", "MusicStore.TestUtils\MusicStore.TestUtils.csproj", "{D8F44EB0-A140-4A70-913E-245457488EBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicStore.Data.NHibernate.Tests", "MusicStore.Data.NHibernate.Tests\MusicStore.Data.NHibernate.Tests.csproj", "{901B3503-C1B7-40AE-A031-FF6F07AA5633}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0AC292C0-93EC-4B3F-B822-F859D6710D3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AC292C0-93EC-4B3F-B822-F859D6710D3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AC292C0-93EC-4B3F-B822-F859D6710D3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AC292C0-93EC-4B3F-B822-F859D6710D3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B89EC6CB-1671-4483-88D9-846AC7922E86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B89EC6CB-1671-4483-88D9-846AC7922E86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B89EC6CB-1671-4483-88D9-846AC7922E86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B89EC6CB-1671-4483-88D9-846AC7922E86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B23598D0-2CE9-4883-8B17-B07B0503BF6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B23598D0-2CE9-4883-8B17-B07B0503BF6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B23598D0-2CE9-4883-8B17-B07B0503BF6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B23598D0-2CE9-4883-8B17-B07B0503BF6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB7055F5-4A33-40D1-99DE-821E022DBD68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB7055F5-4A33-40D1-99DE-821E022DBD68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB7055F5-4A33-40D1-99DE-821E022DBD68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB7055F5-4A33-40D1-99DE-821E022DBD68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE37EDE0-7715-421D-8708-8119439CAAA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE37EDE0-7715-421D-8708-8119439CAAA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE37EDE0-7715-421D-8708-8119439CAAA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE37EDE0-7715-421D-8708-8119439CAAA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53D49374-89B1-400F-8245-33D3C69A715C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53D49374-89B1-400F-8245-33D3C69A715C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53D49374-89B1-400F-8245-33D3C69A715C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53D49374-89B1-400F-8245-33D3C69A715C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8F44EB0-A140-4A70-913E-245457488EBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8F44EB0-A140-4A70-913E-245457488EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8F44EB0-A140-4A70-913E-245457488EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8F44EB0-A140-4A70-913E-245457488EBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{901B3503-C1B7-40AE-A031-FF6F07AA5633}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{901B3503-C1B7-40AE-A031-FF6F07AA5633}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{901B3503-C1B7-40AE-A031-FF6F07AA5633}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{901B3503-C1B7-40AE-A031-FF6F07AA5633}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0AC292C0-93EC-4B3F-B822-F859D6710D3C} = {FE482637-7C15-477B-A329-EA58D9C341C3}
+		{B89EC6CB-1671-4483-88D9-846AC7922E86} = {FE482637-7C15-477B-A329-EA58D9C341C3}
+		{B23598D0-2CE9-4883-8B17-B07B0503BF6A} = {C98F3DDC-A301-4719-B534-61555242AA54}
+		{BB7055F5-4A33-40D1-99DE-821E022DBD68} = {C98F3DDC-A301-4719-B534-61555242AA54}
+		{BE37EDE0-7715-421D-8708-8119439CAAA7} = {C98F3DDC-A301-4719-B534-61555242AA54}
+		{53D49374-89B1-400F-8245-33D3C69A715C} = {FEEC733C-231A-4B88-827B-9FAF7AF595F5}
+		{D8F44EB0-A140-4A70-913E-245457488EBD} = {28043C05-5E95-44FE-9B26-D3CA67CD00C7}
+		{901B3503-C1B7-40AE-A031-FF6F07AA5633} = {28043C05-5E95-44FE-9B26-D3CA67CD00C7}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,32 @@
+﻿<div class="col-sm-4 col-xs-12">
+    <div class="pull-right">
+        <div class="header-links">
+            <ul class="nav navbar-nav">
+                @if (@Request.IsAuthenticated)
+                {
+                    <li>
+                        <a href="@Url.Action("Index", "Account", new { area = "Account" })">
+                            <i class="fa fa-home hidden-lg hidden-md" title="My Account"></i>
+                            <span class="hidden-sm hidden-xs">My Account</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("SignOut", "Account", new { area = "Account" })">
+                            <i class="fa fa-home hidden-lg hidden-md" title="Sign Out"></i>
+                            <span class="hidden-sm hidden-xs">Sign Out</span>
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="@Url.Action("Login", "Account", new { area = "Account" })">
+                            <i class="fa fa-home hidden-lg hidden-md" title="Login"></i>
+                            <span class="hidden-sm hidden-xs">Login</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿@model IndexArtistViewModel
+@{
+    ViewBag.Title = "Artists";
+}
+
+@Html.MvcSiteMap().SiteMapPath()
+
+<p class="table-top-link">
+    @Html.ActionLink("Create New", "Create", "Artist")
+</p>
+
+<div class="table-responsive compare-table">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var artist in Model.Artists)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => artist.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = artist.Id }) |
+                        @Html.ActionLink("Details", "Detail", new { id = artist.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = artist.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

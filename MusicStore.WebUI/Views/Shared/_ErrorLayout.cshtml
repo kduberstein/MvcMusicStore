@@ -1,0 +1,10 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        @RenderSection("breadcrumb", false)
+        @RenderBody()
+    </div>
+</div>

@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@Html.MvcSiteMap().SiteMapPath()
+
+<div class="row">
+    <div class="col-md-12">
+        @RenderBody()
+    </div>
+</div>

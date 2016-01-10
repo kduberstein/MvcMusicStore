@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MusicStore.Model" namespace="MusicStore.Model.Products">
+
+  <class name="Album" table="`ALBUM`">
+
+    <id name="Id" access="property" column="`ALBUM_ID`">
+      <generator class="guid.comb" />
+    </id>
+
+    <version name="Version" column="`VERSION`" />
+
+    <many-to-one name="Genre" column="`GENRE_ID`" not-null="true" />
+    <many-to-one name="Artist" column="`ARTIST_ID`" not-null="true" />
+
+    <property name="Title" type="String" column="`TITLE`" not-null="true" />
+    <property name="Description" type="StringClob" column="`DESCRIPTION`" not-null="true" />
+    <property name="Price" type="Decimal" column="`PRICE`" precision="19" scale="4" not-null="true" />
+    <property name="AlbumArtUrl" type="StringClob" column="`ALBUM_ART_URL`" />
+
+  </class>
+
+</hibernate-mapping>

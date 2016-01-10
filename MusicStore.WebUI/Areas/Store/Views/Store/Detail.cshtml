@@ -1,0 +1,56 @@
+﻿@model DetailStoreViewModel
+@{
+    ViewBag.Title = "Detail";
+}
+
+@Html.MvcSiteMap().SiteMapPath()
+
+<div class="row product-info">
+    <div class="col-sm-5 images-block">
+        <p>
+            <img src="@Model.Album.AlbumArtUrl" alt="Image" class="img-responsive thumbnail"/>
+        </p>
+    </div>
+    <div class="col-sm-7 product-details">
+        <h2>@Model.Album.Title</h2>
+        <hr/>
+        <ul class="list-unstyled manufacturer">
+            <li>
+                <span>Title:</span> @Model.Album.Title
+            </li>
+            <li>
+                <span>Genre:</span> @Model.Album.Genre.Name
+            </li>
+            <li>
+                <span>Availability:</span> <strong class="label label-success">In Stock</strong>
+            </li>
+        </ul>
+        <hr/>
+        <div class="price">
+            <span class="price-head">Price :</span>
+            <span class="price-new">@Model.Album.Price</span>
+        </div>
+        <hr/>
+        <div class="options">
+            <div class="cart-button button-group">
+                <a href="@Url.Action("Add", "Cart", new { area = "Cart", id = @Model.Album.Id })" class="btn btn-cart">
+                    Add to cart
+                    <i class="fa fa-shopping-cart"></i>
+                </a>
+            </div>
+        </div>
+        <hr/>
+    </div>
+</div>
+
+<div class="product-info-box">
+    <h4 class="heading">Description</h4>
+    <div class="content panel-smart">
+        <p>
+            @Html.Raw(@Model.Album.Description)
+        </p>
+    </div>
+</div>
+
+<br/>
+[related products placeholder]

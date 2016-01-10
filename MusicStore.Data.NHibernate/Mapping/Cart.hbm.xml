@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MusicStore.Model" namespace="MusicStore.Model.Ecommerce">
+
+  <class name="Cart" table="`CART`">
+
+    <id name="Id" access="property" column="`CART_ID`">
+      <generator class="guid.comb" />
+    </id>
+
+    <version name="Version" column="`VERSION`" />
+
+    <set name="Items" inverse="true" lazy="true" cascade="all-delete-orphan" access="field.camelcase-underscore">
+      <key column="`CART_ID`" />
+      <one-to-many class="CartItem" />
+    </set>
+
+  </class>
+
+</hibernate-mapping>

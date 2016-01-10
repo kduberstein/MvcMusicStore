@@ -1,0 +1,37 @@
+﻿@using MusicStore.Infrastructure.Helpers
+@model BrowseStoreViewModel
+@{
+    ViewBag.Title = "Browse";
+}
+
+@Html.MvcSiteMap().SiteMapPath()
+
+<div class="row">
+    @foreach (var album in Model.Albums)
+    {
+        <div class="col-md-4 col-sm-6">
+            <div class="product-col">
+                <div class="image">
+                    <img src="@album.AlbumArtUrl" height="330" width="330" alt="product" class="img-responsive"/>
+                </div>
+                <div class="caption">
+                    <h4>@Html.ActionLink(@album.Title, "Detail", "Store", new { id = album.Id }, string.Empty)</h4>
+                    <div class="description">
+                        @Html.Raw(@album.Description.Truncate(100))
+                    </div>
+                    <div class="price">
+                        <span class="price-new">@album.Price</span>
+                    </div>
+                    <div class="cart-button button-group">
+                        <div class="cart-button button-group">
+                            <a href="@Url.Action("Add", "Cart", new { area = "Cart", id = @album.Id })" class="btn btn-cart">
+                                Add to cart
+                                <i class="fa fa-shopping-cart"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

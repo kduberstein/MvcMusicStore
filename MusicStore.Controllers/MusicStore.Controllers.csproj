@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0AC292C0-93EC-4B3F-B822-F859D6710D3C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MusicStore.Controllers</RootNamespace>
+    <AssemblyName>MusicStore.Controllers</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcSiteMapProvider, Version=4.6.22.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC5.Core.4.6.22\lib\net45\MvcSiteMapProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\AjaxChildActionOnlyAttribute.cs" />
+    <Compile Include="AutoMapperBootStrapper.cs" />
+    <Compile Include="Controllers\Account\AccountController.cs" />
+    <Compile Include="Controllers\Admin\AdminController.cs" />
+    <Compile Include="Controllers\Admin\AlbumController.cs" />
+    <Compile Include="Controllers\Admin\ArtistController.cs" />
+    <Compile Include="Controllers\Admin\GenreController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\Cart\CartController.cs" />
+    <Compile Include="Controllers\Checkout\CheckoutController.cs" />
+    <Compile Include="Controllers\Error\ErrorController.cs" />
+    <Compile Include="Controllers\Home\HomeController.cs" />
+    <Compile Include="Controllers\Store\StoreController.cs" />
+    <Compile Include="DataKeys\CookieDataKeys.cs" />
+    <Compile Include="Mapping\AlbumMapper.cs" />
+    <Compile Include="Mapping\CartMapper.cs" />
+    <Compile Include="Mapping\CustomerMapper.cs" />
+    <Compile Include="Mapping\OrderMapper.cs" />
+    <Compile Include="Mapping\UserLoginMapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Account\AccountView.cs" />
+    <Compile Include="ViewModels\Account\IndexAccountViewModel.cs" />
+    <Compile Include="ViewModels\Account\LoginAccountViewModel.cs" />
+    <Compile Include="ViewModels\Account\RegisterAccountViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Album\CreateAlbumViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Album\DeleteAlbumViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Album\DetailAlbumViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Album\EditAlbumViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Album\IndexAlbumViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Artist\CreateArtistViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Artist\DeleteArtistViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Artist\DetailArtistViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Artist\EditArtistViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Artist\IndexArtistViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Genre\CreateGenreViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Genre\DeleteGenreViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Genre\DetailGenreViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Genre\EditGenreViewModel.cs" />
+    <Compile Include="ViewModels\Admin\Genre\IndexGenreViewModel.cs" />
+    <Compile Include="ViewModels\Cart\CartSummaryViewModel.cs" />
+    <Compile Include="ViewModels\Cart\IndexCartViewModel.cs" />
+    <Compile Include="ViewModels\Cart\RemoveCartItemViewModel.cs" />
+    <Compile Include="ViewModels\Cart\UpdateCartItemViewModel.cs" />
+    <Compile Include="ViewModels\Checkout\AddressAndPaymentCheckoutViewModel.cs" />
+    <Compile Include="ViewModels\Checkout\CompleteCheckoutViewModel.cs" />
+    <Compile Include="ViewModels\Error\ErrorViewModel.cs" />
+    <Compile Include="ViewModels\Shared\BasePageViewModel.cs" />
+    <Compile Include="ViewModels\Shared\CustomPrincipalViewModel.cs" />
+    <Compile Include="ViewModels\Store\BrowseStoreViewModel.cs" />
+    <Compile Include="ViewModels\Store\DetailStoreViewModel.cs" />
+    <Compile Include="ViewModels\Store\GenreMenuViewModel.cs" />
+    <Compile Include="ViewModels\Store\IndexStoreViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MusicStore.Infrastructure\MusicStore.Infrastructure.csproj">
+      <Project>{53D49374-89B1-400F-8245-33D3C69A715C}</Project>
+      <Name>MusicStore.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MusicStore.Services\MusicStore.Services.csproj">
+      <Project>{BE37EDE0-7715-421D-8708-8119439CAAA7}</Project>
+      <Name>MusicStore.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
