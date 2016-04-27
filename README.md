@@ -1,3 +1,5 @@
+# Code Sample
+
 # Mvc Music Store
 This solution is my interpretation of the popular ASP.NET [Mvc Music Store](http://www.asp.net/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-1) tutorial. It is not meant to be a complete solution, rather it is meant to demonstrate how to properly structure a domain-driven solution design.
 
